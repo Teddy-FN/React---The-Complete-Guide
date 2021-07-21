@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import ExpenseForm from './ExpenseForm'
 import './NewExpense.css'
 
@@ -10,10 +10,31 @@ const NewExpense = (props) => {
             id: Math.random().toString(),
         }
         props.onAddExpense(expenseData)
+        handlerCancel()
     }
+    // ADD NEW EXPENSE
+  let [newAddExpense, setNewAddExpense] = useState(false)
+  
+  const handlerNewExpense = () => {
+      setNewAddExpense(true)
+      console.log(true)
+  }
+  const handlerCancel = () => {
+      setNewAddExpense(false)
+  }
     return (
         <div className="new-expense">
-            <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} />
+        {
+            !newAddExpense ? 
+            <div className="new-expenses">
+                <h1>{newAddExpense}</h1>
+                <button type="submit" onClick={handlerNewExpense}>Add New Expense</button>
+            </div> :
+            <ExpenseForm 
+                onSaveExpenseData={onSaveExpenseDataHandler} 
+                handlerCancelBtn={handlerCancel}    
+            />
+        }
         </div>
     )
 }

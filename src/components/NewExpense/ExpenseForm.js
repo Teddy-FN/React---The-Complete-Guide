@@ -16,12 +16,14 @@ const ExpenseForm = (props) => {
     setEnteredDates(e.target.value);
   };
 
+
+
   // HANDLER SUBMIT
   const submitHandler = (e) => {
     e.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDates),
     };
     console.log("expenseData", expenseData);
@@ -31,6 +33,7 @@ const ExpenseForm = (props) => {
     setEnteredDates("");
   };
   return (
+    <div>
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -62,10 +65,16 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
+      <div className="btn-wrapper">
+        <div className="new-expense__actions">
+          <button type="submit" onClick={props.handlerCancelBtn}>Cancel</button>
+        </div>
+        <div className="new-expense__actions">
+          <button type="submit">Add Expense</button>
+        </div>
       </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

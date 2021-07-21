@@ -24,3 +24,19 @@
   .new-expense__actions {
     text-align: right;
   }
+
+  .choose_curency {
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+
+  .choose_curency label {
+    margin-top: 10px;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+  }
